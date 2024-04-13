@@ -209,7 +209,7 @@ function GetSQLSchema {
 		-Uri "https://$($env:WEBSITE_HOSTNAME)/install.php" `
 		-Body $body `
 		-Method Post
-
+    Log($res.content)
 	$str = $res.Content
 	$start = $str.IndexOf("<textarea ")
 	$end = $str.IndexOf("</textarea>")

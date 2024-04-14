@@ -177,7 +177,7 @@ function UpdateConfig {
 
 function CallSql {
 	param(
-		
+		[parameter(Position=0, Mandatory=$true)]
 		[string]$Query
     )
 

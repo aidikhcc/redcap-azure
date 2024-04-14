@@ -148,7 +148,7 @@ function ApplySchema {
 	#Get schema
 	$sql = GetSQLSchema
 	Log("Schema retrieved from site, applying...")
-	Log ($sql)
+	
 	CallSql -Query $sql
 
 	Log("Completed applying schema")
@@ -177,7 +177,7 @@ function UpdateConfig {
 
 function CallSql {
 	param(
-		[parameter(Position=0, Mandatory=$true)]
+		
 		[string]$Query
     )
 

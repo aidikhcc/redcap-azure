@@ -95,15 +95,7 @@ function Main {
 			}
         } else {
             Write-Output "File $filename already present"
-			
-            # Update database config
-            Log("Updating MySql DB connection settings")
-            UpdateDBConnection
-
-			# Apply schema
-        	Log("Applying schema to new database (this could take several minutes)")
-			ApplySchema
-			
+		
 			# Update app config
 			Log("Updating configuration in redcap_config")
 			UpdateConfig
@@ -177,7 +169,6 @@ function UpdateConfig {
 
 function CallSql {
 	param(
-		[parameter(Position=0, Mandatory=$true)]
 		[string]$Query
     )
 

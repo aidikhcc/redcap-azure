@@ -95,6 +95,34 @@ function Main {
 			}
         } else {
             Write-Output "File $filename already present"
+			
+            # Update database config
+            Log("Updating MySql DB connection settings")
+            UpdateDBConnection
+
+			# Apply schema
+        	Log("Applying schema to new database (this could take several minutes)")
+			ApplySchema
+			
+			# Update app config
+			Log("Updating configuration in redcap_config")
+			UpdateConfig
+
+			# Setup Web Job
+			Log("Setting up web job")
+			SetupWebJob
+
+			# add web.config to clean up MIME types in IIS
+			Log("Copying web.config")
+			Copy-Item -Path "$path\Files\web.config" -Destination "$webRoot\web.config"
+
+			Log("Deployment complete")
+
+			Log("Stopping W3WP process to force reload of PHP settings (process will restart automatically)")
+			Start-Job -ScriptBlock { 
+				Start-Sleep -Seconds 2; 
+				Stop-Process -Name w3wp -ErrorAction Ignore
+			}
         }
     }
     catch {
@@ -120,7 +148,7 @@ function ApplySchema {
 	#Get schema
 	$sql = GetSQLSchema
 	Log("Schema retrieved from site, applying...")
-
+	Log ($sql)
 	CallSql -Query $sql
 
 	Log("Completed applying schema")
@@ -209,7 +237,7 @@ function GetSQLSchema {
 		-Uri "https://$($env:WEBSITE_HOSTNAME)/install.php" `
 		-Body $body `
 		-Method Post
-    Log($res.content)
+    
 	$str = $res.Content
 	$start = $str.IndexOf("<textarea ")
 	$end = $str.IndexOf("</textarea>")

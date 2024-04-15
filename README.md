@@ -1,5 +1,6 @@
 # ARM Template for REDCap automated deployment in Azure
 
+## This template is an edited version from the vanderbilt-redcap original tempalate. Prepared by AIDI KHCC team to account for depreciation of the signle mysql for azure, This deploys a flexible servers and the template has all of the related parameters changed/updated.
 
 ## Quick Start
 

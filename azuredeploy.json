@@ -180,7 +180,7 @@
             }
         },
         "repoURL": {
-            "defaultValue": "https://github.com/vanderbilt-redcap/redcap-azure.git",
+            "defaultValue": "https://github.com/aidikhcc/redcap-azure.git",
             "type": "String",
             "metadata": {
                 "description": "The path to the deployment source files on GitHub"

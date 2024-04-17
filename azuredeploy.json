@@ -200,7 +200,7 @@
         "serverName": "[concat(variables('siteName'), uniqueString(resourceGroup().id))]",
         "hostingPlanName": "[concat(variables('siteName'), '_serviceplan')]",
         "sendgridAccountName": "[concat(variables('siteName'), '_sendgrid')]",
-        "webSiteName": "[concat(variables('siteName'), uniqueString(resourceGroup().id))]",
+        "webSiteName": "[concat(variables('siteName'), '')]",
         "tierSymbol": {
             "Basic": "B",
             "GeneralPurpose": "GP",

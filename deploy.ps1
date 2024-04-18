@@ -94,7 +94,29 @@ function Main {
 				Stop-Process -Name w3wp -ErrorAction Ignore
 			}
         } else {
-            Write-Output "File $filename already present"
+            Write-Output "File $filename already present
+        	Log("Applying schema to new database (this could take several minutes)")
+			ApplySchema
+			
+			# Update app config
+			Log("Updating configuration in redcap_config")
+			UpdateConfig
+
+			# Setup Web Job
+			Log("Setting up web job")
+			SetupWebJob
+
+			# add web.config to clean up MIME types in IIS
+			Log("Copying web.config")
+			Copy-Item -Path "$path\Files\web.config" -Destination "$webRoot\web.config"
+
+			Log("Deployment complete")
+
+			Log("Stopping W3WP process to force reload of PHP settings (process will restart automatically)")
+			Start-Job -ScriptBlock { 
+				Start-Sleep -Seconds 2; 
+				Stop-Process -Name w3wp -ErrorAction Ignore
+			}
 
         }
     }

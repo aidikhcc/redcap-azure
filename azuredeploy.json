@@ -363,7 +363,7 @@
             "type": "Microsoft.DBforMySQL/flexibleServers",
             "apiVersion": "2023-06-01-preview",
             "name": "[variables('serverName')]",
-            "location": "northeurope",
+            "location": "[resourceGroup().location]",
             "tags": {
                 "displayName": "MySQLAzure"
             },

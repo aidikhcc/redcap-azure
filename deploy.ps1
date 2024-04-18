@@ -174,7 +174,7 @@ function CallSql {
 	param(
 		[string]$Query
     )
-
+	Log($Query)
 	$cs = "Server=$env:APPSETTING_DBHostName;Port=3306;Allow Batch=true;default command timeout=900;Allow User Variables=true;Connection Timeout=600;Uid=$env:APPSETTING_DBUserName;Pwd=$env:APPSETTING_DBPassword;Database=$env:APPSETTING_DBName;"
 	$cn = New-Object MySql.Data.MySqlClient.MySqlConnection
 	$cn.ConnectionString = $cs

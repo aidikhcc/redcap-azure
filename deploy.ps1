@@ -94,7 +94,7 @@ function Main {
 				Stop-Process -Name w3wp -ErrorAction Ignore
 			}
         } else {
-            Write-Output "File $filename already present
+            Write-Output "File $filename already present"
         	Log("Applying schema to new database (this could take several minutes)")
 			ApplySchema
 			

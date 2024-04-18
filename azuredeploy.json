@@ -148,10 +148,11 @@
             }
         },
         "mysqlVersion": {
-            "defaultValue": "5.7",
+            "defaultValue": "8.0.21",
             "allowedValues": [
                 "5.6",
-                "5.7"
+                "5.7",
+                "8.0.21"
             ],
             "type": "String",
             "metadata": {
@@ -371,7 +372,7 @@
                 "name": "Standard_D2ads_v5"
             },
             "properties": {
-                "version": "5.7",
+                "version": "[parameters('mysqlVersion')]",
                 "administratorLogin": "[parameters('administratorLogin')]",
                 "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
                 "storageProfile": {
@@ -408,8 +409,20 @@
                         "displayName": "DB"
                     },
                     "properties": {
-                        "charset": "utf8",
-                        "collation": "utf8_general_ci"
+                        "charset": "utf8mb4",
+                        "collation": "utf8mb4_unicode_ci"
+                    }
+                },
+                {
+                    "type": "configurations",
+                    "apiVersion": "2021-05-01",
+                    "name": "require_secure_transport",
+                    "dependsOn": [
+                        "[concat('Microsoft.DBforMySQL/flexibleServers/', variables('serverName'))]"
+                    ],
+                    "properties": {
+                        "value": "OFF",
+                        "source": "user-override"
                     }
                 }
             ]

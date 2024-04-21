@@ -8,7 +8,7 @@ $version = 0;
 #Please review the azuredeploy.json file for available options
 $RGName        = "<YOUR RESOURCE GROUP>"
 $DeployRegion  = "<SELECT AZURE REGION>"
-$AssetLocation = "https://github.com/vanderbilt-redcap/redcap-azure/blob/master/azuredeploy.json"
+$AssetLocation = "https://github.com/aidikhcc/redcap-azure/blob/master/azuredeploy.json"
 
 $parms = @{
 

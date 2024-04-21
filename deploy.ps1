@@ -178,7 +178,7 @@ function CallSql {
 	$cn = New-Object MySql.Data.MySqlClient.MySqlConnection
 	$cn.ConnectionString = $cs
 	$cn.Open()
-	Log($cn.State)
+	
 	$cmd= New-Object MySql.Data.MySqlClient.MySqlCommand
 	$cmd.Connection  = $cn
 	$cmd.CommandType = [System.Data.CommandType]::Text

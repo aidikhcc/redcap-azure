@@ -225,6 +225,7 @@ function GetSQLSchema {
 	$body = @{
 		"version" = $dbver
 	}
+ 	log($body)
 	$res = Invoke-WebRequest `
 		-UseBasicParsing `
 		-Uri "https://$($env:WEBSITE_HOSTNAME)/install.php" `

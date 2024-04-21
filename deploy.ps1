@@ -141,7 +141,7 @@ function CreateContainer {
 
 function ApplySchema {
 	#Get schema
- 	Log($dbver)
+ 	
 	$sql = GetSQLSchema
 	Log("Schema retrieved from site, applying...")
 	
@@ -226,8 +226,7 @@ function GetSQLSchema {
 	$body = @{
 		"version" = $dbver
 	}
- 	Log($body)
- 	Log($dbver)
+ 	
 	$res = Invoke-WebRequest `
 		-UseBasicParsing `
 		-Uri "https://$($env:WEBSITE_HOSTNAME)/install.php" `

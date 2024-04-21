@@ -179,7 +179,7 @@ function CallSql {
 	$cn = New-Object MySql.Data.MySqlClient.MySqlConnection
 	$cn.ConnectionString = $cs
 	$cn.Open()
- 	Log(=$env:APPSETTING_DBUserName)
+ 	Log($env:APPSETTING_DBUserName)
 	Log($cn.State)
 	$cmd= New-Object MySql.Data.MySqlClient.MySqlCommand
 	$cmd.Connection  = $cn

@@ -150,7 +150,7 @@ function ApplySchema {
 
 function UpdateConfig {
 	Log("Updating site configuration in database")
-	Log($env:APPSETTING_DBName)
+	Log($($env:APPSETTING_DBName))
 	CallSql -Query "UPDATE $($env:APPSETTING_DBName).redcap_config SET value ='https://$($env:WEBSITE_HOSTNAME)/' WHERE field_name = 'redcap_base_url';"
 	
 	Log("Updating storage configuration in database")

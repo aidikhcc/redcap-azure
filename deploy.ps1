@@ -151,16 +151,16 @@ function ApplySchema {
 function UpdateConfig {
 	Log("Updating site configuration in database")
 	
-	CallSql -Query "UPDATE '$($env:APPSETTING_DBName)'.redcap_config SET value ='https://$($env:WEBSITE_HOSTNAME)/' WHERE field_name = 'redcap_base_url';'
+	CallSql -Query "UPDATE $($env:APPSETTING_DBName).redcap_config SET value ='https://$($env:WEBSITE_HOSTNAME)/' WHERE field_name = 'redcap_base_url';'
 	
 	Log("Updating storage configuration in database")
 	$sqlList = @(
 		#storage
-		"UPDATE '$($env:APPSETTING_DBName)'.redcap_config SET value ='$env:APPSETTING_StorageAccount' WHERE field_name = 'azure_app_name';",
-		"UPDATE '$($env:APPSETTING_DBName)'.redcap_config SET value ='$env:APPSETTING_StorageKey' WHERE field_name = 'azure_app_secret';",
-		"UPDATE '$($env:APPSETTING_DBName)'.redcap_config SET value ='$env:APPSETTING_StorageContainerName' WHERE field_name = 'azure_container';"
-		"UPDATE '$($env:APPSETTING_DBName)'.redcap_config SET value ='4' WHERE field_name = 'edoc_storage_option';"
-		"REPLACE INTO '$($env:APPSETTING_DBName)'.redcap_config (field_name, value) VALUES ('azure_quickstart', '1');"
+		"UPDATE $($env:APPSETTING_DBName).redcap_config SET value ='$env:APPSETTING_StorageAccount' WHERE field_name = 'azure_app_name';",
+		"UPDATE $($env:APPSETTING_DBName).redcap_config SET value ='$env:APPSETTING_StorageKey' WHERE field_name = 'azure_app_secret';",
+		"UPDATE $($env:APPSETTING_DBName).redcap_config SET value ='$env:APPSETTING_StorageContainerName' WHERE field_name = 'azure_container';"
+		"UPDATE $($env:APPSETTING_DBName).redcap_config SET value ='4' WHERE field_name = 'edoc_storage_option';"
+		"REPLACE INTO $($env:APPSETTING_DBName).redcap_config (field_name, value) VALUES ('azure_quickstart', '1');"
 	)
 	$sqlStr = $sqlList -join "`r`n" | Out-String
 	#SilentlyContinue should accomodate earlier versions that don't have direct support for Azure storage

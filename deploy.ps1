@@ -95,7 +95,9 @@ function Main {
 			}
         } else {
             Write-Output "File $filename already present"
-
+        	Log("Applying schema to new database (this could take several minutes)")
+			ApplySchema
+			
 			# Update app config
 			Log("Updating configuration in redcap_config")
 			UpdateConfig
@@ -150,9 +152,9 @@ function ApplySchema {
 
 function UpdateConfig {
 	Log("Updating site configuration in database")
-	
-	CallSql -Query "UPDATE $($env:APPSETTING_DBName).redcap_config SET value ='https://$($env:WEBSITE_HOSTNAME)/' WHERE field_name = 'redcap_base_url';'
-	
+
+	CallSql -Query "UPDATE $($env:APPSETTING_DBName).redcap_config SET value ='https://$($env:WEBSITE_HOSTNAME)/' WHERE field_name = 'redcap_base_url';"
+
 	Log("Updating storage configuration in database")
 	$sqlList = @(
 		#storage
@@ -164,7 +166,6 @@ function UpdateConfig {
 	)
 	$sqlStr = $sqlList -join "`r`n" | Out-String
 	#SilentlyContinue should accomodate earlier versions that don't have direct support for Azure storage
- 	
 	CallSql -Query $sqlStr -ErrorAction SilentlyContinue
 
 	Log("Completed updating configuration")
@@ -178,6 +179,8 @@ function CallSql {
 	$cn = New-Object MySql.Data.MySqlClient.MySqlConnection
 	$cn.ConnectionString = $cs
 	$cn.Open()
+ 	Log($cs)
+	Log($cn.State)
 	$cmd= New-Object MySql.Data.MySqlClient.MySqlCommand
 	$cmd.Connection  = $cn
 	$cmd.CommandType = [System.Data.CommandType]::Text

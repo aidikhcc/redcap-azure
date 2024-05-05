@@ -43,7 +43,7 @@ $parms = @{
     "storageContainerName"        = "redcap";
 
     #GitHub
-    "repoURL"                     = "https://github.com/vanderbilt-redcap/redcap-azure.git";
+    "repoURL"                     = "https://github.com/aidikhcc/redcap-azure.git";
     "branch"                      = "master";
 }
 #END DEPLOYMENT OPTIONS

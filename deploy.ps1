@@ -95,7 +95,7 @@ function Main {
 			}
         } else {
             Write-Output "File $filename already present"
-        	Log("Applying schema to new database (this could take several minutes)")
+        	Log("Applying schema to new database (this could take several minutess)")
 			ApplySchema
 			
 			# Update app config

@@ -7,7 +7,7 @@
 Description | Link
 --- | ---
 Deploy with your SMTP Relay | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Faidikhcc%2Fredcap-azure%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
-Deploy using SendGrid | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FFaidikhcc%2Fredcap-azure%2Fmaster%2Fazuredeploy_with_SendGrid.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+Deploy using SendGrid | <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Faidikhcc%2Fredcap-azure%2Fmaster%2Fazuredeploy_with_SendGrid.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
 __Details__
 

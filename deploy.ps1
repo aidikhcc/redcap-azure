@@ -7,7 +7,7 @@ Add-Type -AssemblyName System.Net.Http
 $path = "$($env:HOME)\site\repository"
 $webRoot = "$($env:HOME)\site\wwwroot"
 
-[System.Reflection.Assembly]::LoadFrom("$path\Files\mysql\MySql.Data.DLL") | Out-Null
+[System.Reflection.Assembly]::LoadFrom("$path\Files\mysql\MySql.Data.dll") | Out-Null
 
 $dbver=""
 $zipUri = "$env:APPSETTING_redcapAppZip"
